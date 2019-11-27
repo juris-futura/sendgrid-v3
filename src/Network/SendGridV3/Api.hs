@@ -151,7 +151,7 @@ data MailAttachment = MailAttachment
   } deriving (Show, Eq)
 
 $(deriveToJSON (defaultOptions
-              { fieldLabelModifier = drop (length ("_mailAttachment" :: String))
+              { fieldLabelModifier = camelTo2 '_' . drop (length ("_mailAttachment" :: String))
               , omitNothingFields = True
               , constructorTagModifier = map toLower }) ''MailAttachment)
 
